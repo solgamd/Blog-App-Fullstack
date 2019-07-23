@@ -1,5 +1,10 @@
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';
 
-.covalence-blue {
-    color: #0091ea;
-}
+
+$theme-colors: (
+    "primary": #6184D8,
+    "secondary": #50C5B7,
+    "danger": #533A71,
+    "success": #9CEC5B,
+    "warning": #F0F465
+);

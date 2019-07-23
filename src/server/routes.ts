@@ -3,7 +3,7 @@ import db from './db';
 
 const router = Router();
 
-router.get('/api/hello', (req, res, next) => {
+router.get('/api/hello', (req, res, next) => { // to test connection with database
     res.json('World');
 });
 

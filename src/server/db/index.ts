@@ -2,6 +2,8 @@ import * as mysql from 'mysql';
 import config from '../config';
 import Blogs from './routes/blogs';
 
+
+
 export const Connection = mysql.createConnection(config.mysql);
 
 Connection.connect(err => {
