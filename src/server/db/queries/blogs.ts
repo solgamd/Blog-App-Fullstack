@@ -1,6 +1,6 @@
 import { Connection } from '../index';
 
-export const all = async () => {
+const all = async () => {
     return new Promise((resolve, reject) => {
 
         Connection.query('SELECT * from blogs', (err, results) => {
@@ -12,7 +12,7 @@ export const all = async () => {
     });
 }
 
-export const one = async (id: number) => {
+const one = async (id: number) => {
     return new Promise((resolve, reject) => {
         
         Connection.query(`SELECT blogs.* FROM blogs WHERE id = ${id}`, (err, results) => {
