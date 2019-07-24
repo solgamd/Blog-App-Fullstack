@@ -27,4 +27,14 @@ router.get('/api/blogs/indiv/:id', async (req, res) => {
     }
 });
 
+router.get('/api/blogs/indiv/:id', async (req, res) => {
+    try {
+        let blog = await db.Blogs.callProcedure(req.body.id);
+        res.json(blog);
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
+});
+
 export default router;

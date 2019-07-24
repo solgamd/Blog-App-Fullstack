@@ -1,4 +1,5 @@
 import * as React from 'react';
+import blogs from '../../server/db/queries/blogs';
 
 export interface BlogCardProps {
     blog: {
@@ -7,7 +8,6 @@ export interface BlogCardProps {
         tag: string
     }
 }
-//Need query to blogtag.name to pass into span badge-pill
  
 const BlogCard: React.SFC<BlogCardProps> = props => {
     return (

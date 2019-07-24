@@ -24,10 +24,22 @@ const one = async (id: number) => {
     });
 }
 
+const callProcedure = async (id: number) => {
+    return new Promise ((resolve, reject) => {
+
+        Connection.query(`CALL spBlogTags(${id})`, (err, results) => {
+            if (err) {
+                return reject(err);
+            }
+            resolve(results);
+        })
+    });
+}
+
 export default {
     all,
-    one
-    //insert
+    one,
+    callProcedure
     //delete
     //search
 }
