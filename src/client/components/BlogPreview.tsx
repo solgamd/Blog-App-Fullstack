@@ -5,24 +5,22 @@ import { Link } from 'react-router-dom';
 export interface BlogPreviewProps {
     blog: IBlog
 }
- 
+
 const BlogPreview: React.SFC<BlogPreviewProps> = ({ blog }) => { //destructuring blog to pass props more easily
     return (
         <div>
-            {/* <article className="col-md-6"> */}
-                <div className="card m-3 mt-8 shadow">
-                    <div className="card-body">
-                        <h5 className="card-title">{blog.title}</h5>
-                        <p className="card-text font-weight-lighter font-italic">{blog.content.substring(0, 20)} ...</p>
-                        <Link to={`/${blog.id}`} className="btn btn-primary btn-block m-1">Read More</Link>
-                    </div>
-                    <div className="card-footer">
-                        <p className="text-muted">Written by {blog.name} on {moment(blog._created).format('MMM Do YYYY')}</p>
-                    </div>
+            <div className="card m-3 mt-8 shadow">
+                <div className="card-body">
+                    <h5 className="card-title">{blog.title}</h5>
+                    <p className="card-text font-weight-lighter font-italic">{blog.content.substring(0, 20)} ...</p>
+                    <Link to={`/${blog.id}`} className="btn btn-primary btn-block m-1">Read More</Link>
                 </div>
-            {/* </article> */}
+                <div className="card-footer">
+                    <p className="text-muted">Written by {blog.name} on {moment(blog._created).format('MMM Do YYYY')}</p>
+                </div>
+            </div>
         </div>
-      );
+    );
 }
- 
+
 export default BlogPreview;

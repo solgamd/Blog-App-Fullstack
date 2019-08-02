@@ -14,11 +14,11 @@ const BlogDetails: React.SFC<BlogDetailsProps> = ({ blog, tags }) => {
             <div className="card shadow">
                 <div className="card-body">
                     <h4 className="card-title">{blog.title}</h4>
-                    <h6 className="card-title">Author</h6>
+                    <h6 className="card-title">{blog.name}</h6>
                     {tags.map(tag => (
                         <span key={`tag-${tag.id}`} className="badge badge-primary badge-pill m-1">{tag.name}</span>
                     ))}
-                    <p className="card-text">Content</p>
+                    <p className="card-text">{blog.content}</p>
                     <p className="text-muted">{moment(blog._created).format('MMM Do YYYY')}</p>
                     <Link to="/" className="btn btn-primary btn-block m-1">Go Home</Link>
                 </div>

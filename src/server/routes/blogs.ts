@@ -27,13 +27,14 @@ router.get('/:blogid?', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        let blogs = await db.blogs.insert(req.body.title, req.body.content, req.body.authorid);
-        res.json(blogs);
+        let { title, content, authorid } = req.body;
+        let result: any = await db.blogs.insert({title, content, authorid});
+        res.json(result);
         console.log('success!')
     } catch (error) {
         console.log(error);
         res.sendStatus(500).json('Uh Oh! Something went wrong.')
     }
-})
+});
 
 export default router;

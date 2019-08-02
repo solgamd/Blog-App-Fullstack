@@ -4,9 +4,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../views/Home';
 import Details from '../views/Details';
 import Navbar from './Navbar';
+import NewPost from '../views/NewPost';
 
-export interface AppProps {
-}
+export interface AppProps {}
 
 export interface AppState {
     name: string;
@@ -21,6 +21,8 @@ const App: React.SFC<AppProps> = () => {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/:blogid" component={Details} />
+                    <Route exact path="/new" component={NewPost} />
+
                 </Switch>
             </main>
         </BrowserRouter>
