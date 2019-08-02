@@ -1,8 +1,9 @@
 import * as React from 'react';
 import '../scss/app';
-import { BrowserRouter, Switch, Link, Route } from 'react-router-dom';
-import Home from './Home';
-import BlogCard from './BlogCard';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Home from '../views/Home';
+import Details from '../views/Details';
+import Navbar from './Navbar';
 
 export interface AppProps {
 }
@@ -15,11 +16,11 @@ const App: React.SFC<AppProps> = () => {
 
     return (
         <BrowserRouter>
+            <Navbar />
             <main className="container">
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/indiv/:id" component={BlogCard} />
-
+                    <Route exact path="/:blogid" component={Details} />
                 </Switch>
             </main>
         </BrowserRouter>

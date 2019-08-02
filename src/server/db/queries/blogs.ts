@@ -1,45 +1,16 @@
-import { Connection } from '../index';
+import { Query } from '../index';
 
-const all = async () => {
-    return new Promise((resolve, reject) => {
+//Blog = id, title, content, authorid, _created
 
-        Connection.query('SELECT * from blogs', (err, results) => {
-            if (err) {
-                return reject(err);
-            }
-            resolve(results);
-        });
-    });
-}
+const all = () => Query('SELECT blogs.*, authors.name FROM blogs JOIN authors ON authors.id = blogs.authorid');
 
-const one = async (id: number) => {
-    return new Promise((resolve, reject) => {
-        
-        Connection.query(`SELECT blogs.* FROM blogs WHERE id = ${id}`, (err, results) => {
-            if (err) {
-                return reject(err);
-            }
-            resolve(results);
-        });
-    });
-}
+const one = (id: number) => Query('SELECT blogs.*, authors.name FROM blogs JOIN authors ON authors.id = blogs.authorid WHERE blogs.id = ?', [id]);
 
-const callProcedure = async (id: number) => {
-    return new Promise ((resolve, reject) => {
-
-        Connection.query(`CALL spBlogTags(${id})`, (err, results) => {
-            if (err) {
-                return reject(err);
-            }
-            resolve(results);
-        })
-    });
-}
+const insert = (title: string, content: string, authorid: number) => Query('INSERT INTO blogs (title, content, authorid) VALUES (?)', [title, content, authorid]);
 
 export default {
     all,
     one,
-    callProcedure
-    //delete
+    insert    //delete
     //search
 }

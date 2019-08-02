@@ -1,13 +1,21 @@
 import * as mysql from 'mysql';
-import config from '../config';
-import Blogs from './queries/blogs';
+import config from '../config'; //automaticall finds index file
 
-export const Connection = mysql.createConnection(config.mysql);
+export const pool = mysql.createPool(config.mysql);
 
-Connection.connect(err => {
-    if(err) console.log(err);
-});
+export const Query = (query:string, values?: any) => {
+    return new Promise<Array<any>> ((resolve, reject) => {
+        pool.query(query, [values], (err, results) => {
+            if (err) reject(err);
+            return resolve(results);
+        })
+    })
+}
+
+import blogs from './queries/blogs';
+import blogtags from './queries/blogtags';
 
 export default {
-    Blogs
+    blogs,
+    blogtags
 }
