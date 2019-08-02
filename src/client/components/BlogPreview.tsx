@@ -13,12 +13,12 @@ const BlogPreview: React.SFC<BlogPreviewProps> = ({ blog }) => { //destructuring
                 <div className="card m-1 shadow">
                     <div className="card-body">
                         <h4 className="card-title">{blog.title}</h4>
-                        <p className="card-text">{blog.content.substring(0, 20)} ...</p>
+                        <p className="card-text">{blog.content.substring(0, 40)} ...</p>
+                        <Link to={`/${blog.id}`} className="btn btn-primary btn-block m-1">Read More</Link>
                     </div>
                     <div className="card-footer">
                         <p className="text-muted">Written by {blog.name} on {moment(blog._created).format('MMM Do YYYY')}</p>
                     </div>
-                    <Link to={`/${blog.id}`} className="btn btn-primary btn-block m-1">Read More</Link>
                 </div>
             </article>
         </div>
