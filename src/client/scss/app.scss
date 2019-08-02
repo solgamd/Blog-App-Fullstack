@@ -1,6 +1,3 @@
-@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
-
-
 $theme-colors: (
     "primary": #6184D8,
     "secondary": #50C5B7,
@@ -8,3 +5,24 @@ $theme-colors: (
     "success": #9CEC5B,
     "warning": #F0F465
 );
+
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+
+.card-title {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.btn {
+    text-transform: uppercase;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.card-body {
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.p, .card-footer {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

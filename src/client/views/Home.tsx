@@ -22,13 +22,16 @@ const Home: React.SFC<HomeProps> = props => {
     }, []);
 
     return (
-        <section className="row">
-            <article className="col-md-6 offset-3">
+        <div>
+        <h1 className="row mt-3 justify-content-center">Home Blog Feed</h1>
+        <section className="row mt-3">
+            {/* <article className="col-10"> */}
                 {blogs.map(blog => (
                     <BlogPreview key={`blog-${blog.id}`} blog={blog} />
                 ))}
-            </article>
+            {/* </article> */}
         </section>
+        </div>
     )
 }
 
