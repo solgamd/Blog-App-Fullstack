@@ -20,7 +20,7 @@ const App: React.SFC<AppProps> = () => {
             <main className="container">
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/:blogid" component={Details} />
+                    <Route exact path="/:blogid/details" component={Details} />
                     <Route exact path="/new" component={NewPost} />
 
                 </Switch>
