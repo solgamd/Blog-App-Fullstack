@@ -5,7 +5,7 @@ import BlogPreview from '../components/BlogPreview';
 
 export interface HomeProps { }
 
-const Home: React.SFC<HomeProps> = props => {
+const Home: React.SFC<HomeProps> = () => {
 
     const [blogs, setBlogs] = useState<IBlog[]>([]);
 
@@ -22,16 +22,16 @@ const Home: React.SFC<HomeProps> = props => {
     }, []);
 
     return (
-        <div>
-        <h1 className="row mt-3 justify-content-center">Home Blog Feed</h1>
-        <section className="row mt-3">
-            {/* <article className="col-10"> */}
+        <>
+            <div>
+                <h2 className="row m-4 justify-content-center">Your Blog Feed</h2>
+            </div>
+            <section className="row mt-3">
                 {blogs.map(blog => (
                     <BlogPreview key={`blog-${blog.id}`} blog={blog} />
                 ))}
-            {/* </article> */}
-        </section>
-        </div>
+            </section>
+        </>
     )
 }
 

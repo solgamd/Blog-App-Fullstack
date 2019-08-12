@@ -34,9 +34,11 @@ const Details: React.SFC<DetailsProps> = props => {
     }, [props.match.params.blogid]);
 
     return (
+    
         <section className="row mt-5">
             <BlogDetails blog={blog} tags={tags} />
         </section>
+    
     );
 }
 

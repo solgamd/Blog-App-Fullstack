@@ -27,13 +27,11 @@ router.get('/:blogid?', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        let { title, content, authorid } = req.body;
-        let result: any = await db.blogs.insert({title, content, authorid});
+        let result = await db.blogs.insert(req.body.title, req.body.content, req.body.authorid);
         res.json(result);
-        console.log('success!')
     } catch (error) {
         console.log(error);
-        res.sendStatus(500).json('Uh Oh! Something went wrong.')
+        res.sendStatus(500).json('Uh Oh! Something went wrong.');
     }
 });
 
