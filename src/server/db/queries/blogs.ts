@@ -9,7 +9,7 @@ const one = (id: number) => Query('SELECT blogs.*, authors.name FROM blogs JOIN 
 
 const insert = ({ title, content, authorid }: { title: string, content: string, authorid: number }) => Query('INSERT INTO blogs (title, content, authorid) VALUE (?)', [title, content, authorid]);
 
-const remove = (id) => Query('DELETE FROM blogs WHERE id = ?', [id]);
+const remove = (id: number) => Query('DELETE FROM blogs WHERE id = ?', [id]);
 
 export default {
     all,

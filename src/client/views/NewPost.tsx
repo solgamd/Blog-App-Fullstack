@@ -1,18 +1,41 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { ITag } from '../utils/interfaces';
+import { RouteComponentProps } from 'react-router';
 
-export interface NewPostProps { }
+export interface NewPostProps extends RouteComponentProps{ }
 
-const NewPost: React.SFC<NewPostProps> = () => {
+const NewPost: React.SFC<NewPostProps> = props => {
 
     const [title, setTitle] = useState<string>('');
     const [content, setContent] = useState<string>('')
-    const [tagId, setTagId] = useState<string>('0');
+    const [selectedTag, setSelectedTag] = useState<string>('0');
+    const [tags, setTags] = useState<ITag[]>([]);
 
+    useEffect(() => {
+        (async () => {
+            try {
+                let res = await fetch('/api/tags');
+                let tags = await res.json();
+                setTags(tags);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, []);
 
-    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        console.log("Testing Post submit");
+        try {
+            await fetch('/api/blogs', {
+                method: 'POST',
+                headers: { "Content-type": "application/json"},
+                body: JSON.stringify({ title, content, authorid: 1 })
+            });
+            props.history.push('/');
+        } catch (error) {
+            console.log(error);   
+        }
     }
 
     return (
@@ -26,14 +49,15 @@ const NewPost: React.SFC<NewPostProps> = () => {
                     className="form-control"
                 />
                 
-                <label>Tag</label>
+                <label className="mt-4">Tag</label>
                 <select
-                value={tagId}
-                onChange={(e:React.ChangeEvent<HTMLSelectElement>) => setTagId(e.target.value)}>
+                className="form-control p-1 my-1"
+                value={selectedTag}
+                onChange={(e:React.ChangeEvent<HTMLSelectElement>) => setSelectedTag(e.target.value)}>
                     <option value="0">Select a tag...</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
+                    {tags.map(tag => (
+                        <option key={`option-${tag.id}`} value={tag.id}>{tag.name}</option>
+                ))}
                 </select>
 
                 <label className="mt-4">Blog Content</label>

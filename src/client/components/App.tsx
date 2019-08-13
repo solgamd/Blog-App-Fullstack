@@ -8,10 +8,6 @@ import NewPost from '../views/NewPost';
 
 export interface AppProps {}
 
-// export interface AppState {
-//     name: string;
-// }
-
 const App: React.SFC<AppProps> = () => {
 
     return (
