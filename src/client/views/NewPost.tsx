@@ -30,7 +30,7 @@ const NewPost: React.SFC<NewPostProps> = props => {
             await fetch('/api/blogs', {
                 method: 'POST',
                 headers: { "Content-type": "application/json"},
-                body: JSON.stringify({ title, content, authorid: 1 })
+                body: JSON.stringify({ title, content, authorid: 1, selectedTag })
             });
             props.history.push('/');
         } catch (error) {

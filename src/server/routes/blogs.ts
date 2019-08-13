@@ -29,8 +29,8 @@ router.post('/', async (req, res) => {
     try {
         let tagId = req.body.selectedTag;
         delete req.body.selectedTag;
-        let [newBlogId] = await db.blogs.insert(req.body); //Going to experiment with deconstruction here
-        await db.blogtags.insert(newBlogId, tagId);
+        let newBlogId: any = await db.blogs.insert(req.body); 
+        await db.blogtags.insert(newBlogId.insertId, tagId);
         res.json({ newBlogId });
     } catch (error) {
         console.log(error);
@@ -38,21 +38,12 @@ router.post('/', async (req, res) => {
     }
 });
 
-
-
-
-
-
-
-
-
-
-
 router.delete('/:blogid', async (req, res) => {
     let id = req.params.blogid;
     try {
-        let result = await db.blogs.remove(id);
-        res.json(result);
+        await db.blogtags.remove(id);
+        await db.blogs.remove(id);
+        res.json('Blog post deleted.');
     } catch (error) {
         console.log(error);
         res.status(500).json('Uh Oh! Something went wrong.');
