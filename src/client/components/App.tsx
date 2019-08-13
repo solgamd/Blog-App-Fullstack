@@ -5,6 +5,7 @@ import Home from '../views/Home';
 import Details from '../views/Details';
 import Navbar from './Navbar';
 import NewPost from '../views/NewPost';
+import Admin from '../views/Admin';
 
 export interface AppProps {}
 
@@ -18,6 +19,7 @@ const App: React.SFC<AppProps> = () => {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/:blogid/details" component={Details} />
                     <Route exact path="/new" component={NewPost} />
+                    <Route exact path="/admin" component={Admin} />
 
                 </Switch>
             </main>
