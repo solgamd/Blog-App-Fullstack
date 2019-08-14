@@ -15,14 +15,12 @@ const Edit: React.SFC<EditProps> = props => {
 
     useEffect(() => {
         (async () => {
-
             try {
                 let res = await fetch(`/api/blogs/${props.match.params.blogid}`);
                 let blog = await res.json();
-                setBlog(blog)
-                setTitle(blog[0].title)
-                setContent(blog[0].content)
-                console.log(blog)
+                setBlog(blog);
+                setTitle(blog[0].title);
+                setContent(blog[0].content);
                 let data = await fetch(`/api/tags`);
                 let tags = await data.json();
                 setTags(tags);
@@ -49,6 +47,7 @@ const Edit: React.SFC<EditProps> = props => {
         } catch (error) {
             console.log(error);
         }
+        props.history.push('/');
     }
 
     return (

@@ -8,6 +8,9 @@ $theme-colors: (
 
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';
 
+.navbar-brand, .nav-item {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 .card-title {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -25,4 +28,9 @@ $theme-colors: (
 
 .p, .card-footer {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: slategray;
 }

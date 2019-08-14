@@ -37,18 +37,19 @@ const Admin: React.FC<AdminProps> = () => {
     return (
         <section className="row justify-content-center my-2">
             <article className="col-md-8">
-                <ul className="list-group shadow rounded">
+            <h2 className="row m-3 justify-content-center" >Admin Options</h2>
+                <ul className="list-group mt-3 rounded">
                     {blogs.map(blog => (
                         <li key={`blog-${blog.id}`} className="list-group-item d-flex align-items-center justify-content-between m-1 shadow">
                             <span>{blog.title}</span>
                             <div>
                                 <Link
                                     to={`/${blog.id}/edit`}
-                                    className="btn btn-warning btn-small mx-1"
+                                    className="btn btn-secondary btn-small mx-1"
                                 >Edit</Link>
                                 <button
                                     onClick={() => deleteBlog(blog.id)}
-                                    className="btn btn-warning btn-small mx-1"
+                                    className="btn btn-secondary btn-small mx-1"
                                 >X</button>
                             </div>
                         </li>
